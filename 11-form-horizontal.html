@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <title>formulario horizontal validacion</title>
+</head>
+
+<body>
+    <div class="container mt-3"><!--Novalidate es para que no valide por medio de html-->
+        <form novalidate class="needs-validation" id="formulario">
+            <div class="form-row form-group">
+                <label class="col-md-3">Usuario</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Debes escribir el nombre del usuario
+                    </div>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                    <label class="col-md-3">Contraseña</label>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" required minlength="6">
+                        <div class="invalid-feedback">
+                                La contraseña debe contener al menos 6 caracteres
+                        </div>
+                        <div class="valid-feedback">
+                            ¡Muy Bien!
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-md-3 offset-md-3">
+                    <input type="submit" class="form-control btn btn-primary">
+                    
+                </div>
+                <div class="col-md-6">
+                        <a href="#" class="btn">¿Olvidaste la contraseña?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        //funcion que valida campos vacios o condiciones de los input 
+        var formulario=document.getElementById('formulario');
+        formulario.addEventListener('submit',function(evento)
+        {
+            if(this.checkValidity()===false)
+            {
+                evento.preventDefault();
+                evento.stopPropagation();//deterner el evento que no avise a los elementos padre
+            }
+            this.classList.add('was-validated');
+        });
+    </script>
+</body>
+
+</html>
